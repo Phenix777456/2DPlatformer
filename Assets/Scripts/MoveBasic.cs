@@ -7,6 +7,7 @@ public class MoveBasic : MonoBehaviour
     [SerializeField] private Transform _secondTargetTransform;
     [SerializeField] private Transform _firstTargetTransform;
     [SerializeField] private ZoneTriger _zoneTriger;
+    [SerializeField] private EnemyBasicMovement _enemyBasicMovement;
 
     private bool _isFindTarget;
     private Transform _finalTarget;
@@ -14,7 +15,7 @@ public class MoveBasic : MonoBehaviour
 
     private void OnEnable()
     {
-        _zoneTriger.IsEnteringZone += OnFindTarget;
+        _zoneTriger.EnteringZone += OnFindTarget;
     }
 
     private void Start()
@@ -30,7 +31,7 @@ public class MoveBasic : MonoBehaviour
 
     private void OnDisable()
     {
-        _zoneTriger.IsEnteringZone -= OnFindTarget;
+        _zoneTriger.EnteringZone -= OnFindTarget;
     }
 
     private void OnFindTarget(Transform target)
@@ -44,24 +45,14 @@ public class MoveBasic : MonoBehaviour
 
         if (_isFindTarget == false)
         {
-            if (transform.position.IsEnoughClose(_firstTargetTransform.position, 0.5f))
-            {
-                _finalTarget = _secondTargetTransform;
-                TurnAround(_finalTarget);
-            }
-
-            if (transform.position.IsEnoughClose(_secondTargetTransform.position, 0.5f)  )
-            {
-                _finalTarget = _firstTargetTransform;
-                TurnAround(_finalTarget);
-            }
+            _finalTarget = _enemyBasicMovement.CalculateBasicMovement(_firstTargetTransform, _secondTargetTransform, _finalTarget);
 
             Move(_finalTarget, step);
         }
 
         if (_isFindTarget == true)
         {
-            TurnAround(_heroTarget);
+            _enemyBasicMovement.TurnAround(_heroTarget);
 
             Move(_heroTarget, step);
         }
@@ -83,11 +74,5 @@ public class MoveBasic : MonoBehaviour
     {
         _isFindTarget = false;
         _finalTarget = _firstTargetTransform;
-    }
-
-    private void TurnAround(Transform finalTarget)
-    {
-        transform.LookAt(finalTarget);
-        transform.Rotate(0, 90, 0);
     }
 }

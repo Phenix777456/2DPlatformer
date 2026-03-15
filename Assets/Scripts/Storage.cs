@@ -11,7 +11,7 @@ public class Storage : MonoBehaviour
     private void OnEnable()
     {
         _storageOfCoins = new List<Coin>();
-        _heroTrigger.IsCoinEarned += OnEarnCoin;
+        _heroTrigger.CoinEarned += OnEarnCoin;
     }
 
     private void OnEarnCoin(Coin coin)
@@ -22,6 +22,6 @@ public class Storage : MonoBehaviour
 
     private void OnDisable()
     {
-        _heroTrigger.IsCoinEarned -= OnEarnCoin;
+        _heroTrigger.CoinEarned -= OnEarnCoin;
     }
 }

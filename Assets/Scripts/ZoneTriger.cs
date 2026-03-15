@@ -6,7 +6,7 @@ public class ZoneTriger : MonoBehaviour
     [SerializeField] private Enemy _enemy;
     [SerializeField] private Hero _hero;
 
-    public event Action<Transform> IsEnteringZone;
+    public event Action<Transform> EnteringZone;
 
     private MoveBasic _moveBasic;
 
@@ -19,7 +19,7 @@ public class ZoneTriger : MonoBehaviour
             if (_moveBasic != null)
             {
                 _moveBasic.FindTarget();
-                IsEnteringZone?.Invoke(collision.gameObject.transform);
+                EnteringZone?.Invoke(collision.gameObject.transform);
             }
         }
     }
