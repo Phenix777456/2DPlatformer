@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class MoveBasic : MonoBehaviour
+public class Mover : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private Transform _secondTargetTransform;
     [SerializeField] private Transform _firstTargetTransform;
     [SerializeField] private ZoneTriger _zoneTriger;
-    [SerializeField] private EnemyBasicMovement _enemyBasicMovement;
+    [SerializeField] private MoveToTarget _moveToTarget;
 
     private bool _isFindTarget;
     private Transform _finalTarget;
@@ -45,19 +45,17 @@ public class MoveBasic : MonoBehaviour
 
         if (_isFindTarget == false)
         {
-            _finalTarget = _enemyBasicMovement.CalculateBasicMovement(_firstTargetTransform, _secondTargetTransform, _finalTarget);
+            _finalTarget = _moveToTarget.CalculateBasicMovement(_firstTargetTransform, _secondTargetTransform, _finalTarget);
 
             Move(_finalTarget, step);
         }
 
         if (_isFindTarget == true)
         {
-            _enemyBasicMovement.TurnAround(_heroTarget);
+            _moveToTarget.TurnAround(_heroTarget);
 
             Move(_heroTarget, step);
         }
-
-        Debug.Log(_heroTarget);
     }
 
     private void Move(Transform targetTransform, float step)

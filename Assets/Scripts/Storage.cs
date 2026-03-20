@@ -4,24 +4,21 @@ using UnityEngine;
 
 public class Storage : MonoBehaviour
 {
-    [SerializeField] private HeroTrigger _heroTrigger;
-
     private List<Coin> _storageOfCoins;
 
-    private void OnEnable()
+    private Coin _coin;
+
+    private void Awake()
     {
         _storageOfCoins = new List<Coin>();
-        _heroTrigger.CoinEarned += OnEarnCoin;
     }
 
-    private void OnEarnCoin(Coin coin)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        _storageOfCoins.Add(coin);
-        Debug.Log("Монет собранно:" + _storageOfCoins.Count);
-    }
-
-    private void OnDisable()
-    {
-        _heroTrigger.CoinEarned -= OnEarnCoin;
+        if (collision.gameObject.TryGetComponent<Coin>(out _coin))
+        {
+            _storageOfCoins.Add(_coin);
+            Debug.Log("Монет собранно:" + _storageOfCoins.Count);
+        }
     }
 }

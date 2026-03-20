@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyBasicMovement : MonoBehaviour
+public class MoveToTarget : MonoBehaviour
 {
     private float _rotateY = 90f;
     private float _minDistance = 0.5f;
