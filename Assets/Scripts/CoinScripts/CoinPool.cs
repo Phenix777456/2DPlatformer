@@ -6,7 +6,7 @@ public class CoinPool : MonoBehaviour
     [SerializeField] private Coin _coin;
     [SerializeField] private Vector3 _startPosition;
 
-    private ObjectPool<Coin> _сoins;
+    private ObjectPool<Coin> _coins;
 
     public int MaxSize { get; private set; }
 
@@ -17,7 +17,7 @@ public class CoinPool : MonoBehaviour
 
     private void Start()
     {
-        _сoins = new ObjectPool<Coin>(createFunc: () => Instantiate(_coin),
+        _coins = new ObjectPool<Coin>(createFunc: () => Instantiate(_coin),
             actionOnGet: GetCoin,
             actionOnRelease: ReleaseCoin,
             maxSize: MaxSize);
@@ -25,7 +25,6 @@ public class CoinPool : MonoBehaviour
 
     private void GetCoin(Coin coin)
     {
-        coin.IsCoinErned += OnEarnCoin;
         coin.gameObject.SetActive(true); 
         coin.gameObject.transform.SetParent(this.gameObject.transform);
         coin.gameObject.transform.position = _startPosition;
@@ -38,13 +37,13 @@ public class CoinPool : MonoBehaviour
         coin.gameObject.SetActive(false);
     }
 
-    private void OnEarnCoin(Coin coin)
+    public void ReturnCoin(Coin coin)
     {
-        _сoins.Release(coin);
+        _coins.Release(coin);
     }
 
-    public ObjectPool<Coin> ReturnPool()
+    public void TrySpawn()
     {
-        return _сoins;
+        _coins.Get();  
     }
 }

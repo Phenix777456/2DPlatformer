@@ -7,14 +7,14 @@ public class CoinSpawner : MonoBehaviour
 
     private void Start()
     {
-        SpawnCoin(_coinPool.MaxSize, _coinPool.ReturnPool());
+        SpawnCoin(_coinPool.MaxSize);
     }
 
-    private void SpawnCoin(int maxCoinCount, ObjectPool<Coin> pool)
+    private void SpawnCoin(int maxCoinCount)
     {
         for(int i = 0; i < maxCoinCount; i++)
         {
-            pool.Get();
+            _coinPool.TrySpawn();
         }
     }
 }

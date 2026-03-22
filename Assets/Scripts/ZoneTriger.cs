@@ -8,13 +8,13 @@ public class ZoneTriger : MonoBehaviour
 
     public event Action<Transform> EnteringZone;
 
-    private Mover _moveBasic;
+    private EnemyController _moveBasic;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<Hero>(out _hero))
         {
-            _enemy.TryGetComponent<Mover>(out _moveBasic);
+            _enemy.TryGetComponent<EnemyController>(out _moveBasic);
 
             if (_moveBasic != null)
             {

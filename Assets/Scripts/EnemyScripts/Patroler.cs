@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MoveToTarget : MonoBehaviour
+public class Patroler : MonoBehaviour
 {
     private float _rotateY = 90f;
     private float _minDistance = 0.5f;
