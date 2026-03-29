@@ -154,6 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760cf372b04e2b244803a92e29db73a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hero
+  _health: {fileID: 29824758}
+  _collector: {fileID: 29824741}
 --- !u!114 &29824749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9c9af2a4ca7b748bb3ff75468f7361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthHendler
-  _maxHealth: 10
+  _max: 10
   _baseDamage: 2
   _name: "\u0413\u0435\u0440\u043E\u0439"
 --- !u!1 &519420028
@@ -530,13 +532,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1463392086428580, guid: 3248535f6a2562c489a1223a75951ef2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 945450570}
-    - targetCorrespondingSourceObject: {fileID: 1463392086428580, guid: 3248535f6a2562c489a1223a75951ef2, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 945450571}
-    - targetCorrespondingSourceObject: {fileID: 1463392086428580, guid: 3248535f6a2562c489a1223a75951ef2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 945450577}
     - targetCorrespondingSourceObject: {fileID: 1463392086428580, guid: 3248535f6a2562c489a1223a75951ef2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 945450583}
@@ -546,6 +542,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1463392086428580, guid: 3248535f6a2562c489a1223a75951ef2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 945450590}
+    - targetCorrespondingSourceObject: {fileID: 1463392086428580, guid: 3248535f6a2562c489a1223a75951ef2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 945450596}
   m_SourcePrefab: {fileID: 100100000, guid: 3248535f6a2562c489a1223a75951ef2, type: 3}
 --- !u!1 &899166291
 GameObject:
@@ -599,18 +598,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1463392086428580, guid: 3248535f6a2562c489a1223a75951ef2, type: 3}
   m_PrefabInstance: {fileID: 654552496}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &945450570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945450562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e45685fef331848957ef88a6f3a3cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
 --- !u!114 &945450571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,24 +610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3391b8392cb91074394e0c39dff2712d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBasicMovement
---- !u!114 &945450577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945450562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 197f6f0a38da66044bde88fab948bad4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Mover
-  _speed: 2
-  _secondTargetTransform: {fileID: 1366913074}
-  _firstTargetTransform: {fileID: 1684254750}
-  _zoneTriger: {fileID: 1318259928}
-  _moveToTarget: {fileID: 945450571}
-  _mover: {fileID: 945450583}
 --- !u!114 &945450583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,7 +634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9c9af2a4ca7b748bb3ff75468f7361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthHendler
-  _maxHealth: 10
+  _max: 10
   _baseDamage: 2
   _name: "\u0412\u0440\u0430\u0433"
 --- !u!114 &945450590
@@ -680,6 +649,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8acc141db85c354592c9c392f3cd609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTrigger
+--- !u!114 &945450596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945450562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a5b84159df106439750d5c6c6d4e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  _speed: 2
+  _secondTargetTransform: {fileID: 1366913074}
+  _firstTargetTransform: {fileID: 1684254750}
+  _zoneTriger: {fileID: 1318259928}
+  _moveToTarget: {fileID: 945450571}
+  _mover: {fileID: 945450583}
+  _health: {fileID: 945450584}
 --- !u!1 &1318259925
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,8 +759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690f159327836b940981d0730f810dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZoneTriger
-  _enemy: {fileID: 945450570}
-  _hero: {fileID: 0}
+  _enemy: {fileID: 945450596}
 --- !u!1 &1366913073
 GameObject:
   m_ObjectHideFlags: 0

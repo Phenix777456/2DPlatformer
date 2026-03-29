@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1681739285982854818}
   - component: {fileID: 2156102646686656644}
   - component: {fileID: 6601002632892424212}
-  - component: {fileID: 4395447365359713071}
   - component: {fileID: 9032285255063330587}
   m_Layer: 0
   m_Name: Heal 1
@@ -106,19 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884d1a960a24fdf408352abb20718497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Heal
---- !u!114 &4395447365359713071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5970538767862718598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ddd8bf25908c9046888665f6f24815e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthTrigger
-  _healPower: 3
 --- !u!61 &9032285255063330587
 BoxCollider2D:
   m_ObjectHideFlags: 0

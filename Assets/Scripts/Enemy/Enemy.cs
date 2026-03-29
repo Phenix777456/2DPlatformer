@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class EnemyController : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private Transform _secondTargetTransform;
@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private ZoneTriger _zoneTriger;
     [SerializeField] private Patroler _moveToTarget;
     [SerializeField] private Mover _mover;
+    [SerializeField] private Health _health;
 
     private bool _isFindTarget;
     private Transform _finalTarget;
@@ -17,6 +18,7 @@ public class EnemyController : MonoBehaviour
     private void OnEnable()
     {
         _zoneTriger.EnteringZone += OnFindTarget;
+        _health.HealthExhausted += OnHealthExhausted;
     }
 
     private void Start()
@@ -33,6 +35,22 @@ public class EnemyController : MonoBehaviour
     private void OnDisable()
     {
         _zoneTriger.EnteringZone -= OnFindTarget;
+        _health.HealthExhausted -= OnHealthExhausted;
+    }
+    public void FindTarget()
+    {
+        _isFindTarget = true; 
+    }
+
+    public void LoseTarget()
+    {
+        _isFindTarget = false;
+        _finalTarget = _firstTargetTransform;
+    }
+
+    private void OnHealthExhausted()
+    {
+        gameObject.SetActive(false);
     }
 
     private void OnFindTarget(Transform target)
@@ -59,14 +77,4 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void FindTarget()
-    {
-        _isFindTarget = true; 
-    }
-
-    public void LoseTarget()
-    {
-        _isFindTarget = false;
-        _finalTarget = _firstTargetTransform;
-    }
 }

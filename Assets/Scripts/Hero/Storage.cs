@@ -10,7 +10,7 @@ public class Storage : MonoBehaviour
     private void Awake()
     {
         _storageOfCoins = new List<Coin>();
-        _collector.GetCoin += OnGetCoin;
+        _collector.CoinIsGeted += OnGetCoin;
     }
 
     private void OnGetCoin(Coin coin)
@@ -21,6 +21,6 @@ public class Storage : MonoBehaviour
 
     private void OnDisable()
     {
-        _collector.GetCoin -= OnGetCoin;
+        _collector.CoinIsGeted -= OnGetCoin;
     }
 }

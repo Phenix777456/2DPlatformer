@@ -9,7 +9,7 @@ public class HealthTrigger : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<Hero>(out Hero hero))
         {
-            if (hero.gameObject.TryGetComponent<HealthHendler>(out HealthHendler healthHendler))
+            if (hero.gameObject.TryGetComponent<Health>(out Health healthHendler))
                 healthHendler.ReceiveHeal(_healPower);
 
             gameObject.SetActive(false);
