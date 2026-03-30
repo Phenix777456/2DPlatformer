@@ -3,18 +3,23 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
-    [SerializeField] private Health _health;
     [SerializeField] private Collector _collector;
+    [field: SerializeField] public Health Health { get; private set; }
+
+    private void Awake()
+    {
+        Health = GetComponent<Health>();
+    }
 
     private void OnEnable()
     {
-        _health.HealthExhausted += OnHealthExhausted;
+        Health.Exhausted += OnHealthExhausted;
         _collector.HealIsGeted += OnHealGeted;
     }
 
     private void OnDisable()
     {
-        _health.HealthExhausted -= OnHealthExhausted;
+        Health.Exhausted -= OnHealthExhausted;
         _collector.HealIsGeted -= OnHealGeted;
     }
 
@@ -25,6 +30,6 @@ public class Hero : MonoBehaviour
 
     private void OnHealGeted(int healPower)
     {
-        _health.ReceiveHeal(healPower);
+        Health.ReceiveHeal(healPower);
     }
 }

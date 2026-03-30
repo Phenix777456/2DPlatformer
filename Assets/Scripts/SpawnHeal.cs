@@ -3,7 +3,7 @@ using UnityEngine;
 public class SpawnHeal : MonoBehaviour
 {
     [SerializeField] private int _countOfHeals = 4;
-    [SerializeField] private Heal _healPrefab;
+    [SerializeField] private Recovery _healPrefab;
     [SerializeField] private float _rangeX = 10f;
 
     private void Start()

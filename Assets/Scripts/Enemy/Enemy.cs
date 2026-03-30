@@ -9,16 +9,22 @@ public class Enemy : MonoBehaviour
     [SerializeField] private ZoneTriger _zoneTriger;
     [SerializeField] private Patroler _moveToTarget;
     [SerializeField] private Mover _mover;
-    [SerializeField] private Health _health;
 
     private bool _isFindTarget;
     private Transform _finalTarget;
     private Transform _heroTarget;
 
+    [field: SerializeField] public Health Health { get; private set; }
+
+    private void Awake()
+    {
+        Health = GetComponent<Health>();
+    }
+
     private void OnEnable()
     {
         _zoneTriger.EnteringZone += OnFindTarget;
-        _health.HealthExhausted += OnHealthExhausted;
+        Health.Exhausted += OnHealthExhausted;
     }
 
     private void Start()
@@ -27,7 +33,7 @@ public class Enemy : MonoBehaviour
         _finalTarget = _firstTargetTransform;
     }
 
-    void Update()
+    private void Update()
     {
         HandleCondition();
     }
@@ -35,7 +41,7 @@ public class Enemy : MonoBehaviour
     private void OnDisable()
     {
         _zoneTriger.EnteringZone -= OnFindTarget;
-        _health.HealthExhausted -= OnHealthExhausted;
+        Health.Exhausted -= OnHealthExhausted;
     }
     public void FindTarget()
     {

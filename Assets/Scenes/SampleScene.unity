@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnHeal
   _countOfHeals: 4
-  _healPrefab: {fileID: 6601002632892424212, guid: e40eeb7e7f052124ea606c8e058a3641, type: 3}
+  _healPrefab: {fileID: 8420958253545590524, guid: e40eeb7e7f052124ea606c8e058a3641, type: 3}
   _rangeX: 10
 --- !u!4 &899166293
 Transform:

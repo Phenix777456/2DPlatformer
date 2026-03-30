@@ -18,10 +18,10 @@ public class Collector : MonoBehaviour
             CoinIsGeted?.Invoke(coin);
             _coinPool.ReturnCoin(coin);
         }
-        else if(collision.gameObject.TryGetComponent<Heal>(out Heal heal))
+        else if(collision.gameObject.TryGetComponent<Recovery>(out Recovery heal))
         {
-            HealIsGeted?.Invoke(heal.ReturnHealPower());
-            heal.DestroyHeal();
+            HealIsGeted?.Invoke(heal.healPower);
+            heal.Destroy();
         }
     }
 }

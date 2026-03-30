@@ -42,7 +42,7 @@ public class CoinPool : MonoBehaviour
         _coins.Release(coin);
     }
 
-    public void TrySpawn()
+    public void GetCoinFromPool()
     {
         _coins.Get();  
     }

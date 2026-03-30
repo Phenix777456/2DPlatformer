@@ -14,7 +14,7 @@ public class CoinSpawner : MonoBehaviour
     {
         for(int i = 0; i < maxCoinCount; i++)
         {
-            _coinPool.TrySpawn();
+            _coinPool.GetCoinFromPool();
         }
     }
 }

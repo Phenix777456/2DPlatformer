@@ -5,18 +5,18 @@ public class Storage : MonoBehaviour
 {
     [SerializeField] private Collector _collector;
 
-    private List<Coin> _storageOfCoins;
+    private List<Coin> _coins;
 
     private void Awake()
     {
-        _storageOfCoins = new List<Coin>();
+        _coins = new List<Coin>();
         _collector.CoinIsGeted += OnGetCoin;
     }
 
     private void OnGetCoin(Coin coin)
     {
-        _storageOfCoins.Add(coin);
-        Debug.Log("Монет собранно:" + _storageOfCoins.Count);
+        _coins.Add(coin);
+        Debug.Log("Монет собранно:" + _coins.Count);
     }
 
     private void OnDisable()

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1681739285982854818}
   - component: {fileID: 2156102646686656644}
-  - component: {fileID: 6601002632892424212}
   - component: {fileID: 9032285255063330587}
+  - component: {fileID: 8420958253545590524}
   m_Layer: 0
   m_Name: Heal 1
   m_TagString: Untagged
@@ -93,18 +93,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &6601002632892424212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5970538767862718598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 884d1a960a24fdf408352abb20718497, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Heal
 --- !u!61 &9032285255063330587
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -151,3 +139,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.64, y: 0.57}
   m_EdgeRadius: 0
+--- !u!114 &8420958253545590524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5970538767862718598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d23118eb9676494a891c62ebfd33be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Heal
+  <healPower>k__BackingField: 2

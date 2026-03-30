@@ -9,26 +9,29 @@ public class Health : MonoBehaviour
 
     private float _current;
 
-    public event Action HealthExhausted;
+    public event Action Exhausted;
 
     private void Awake()
     {
         _current = _max;
     }
 
-    public void TakeDamage()
+    public void Reduce()
     {
         _current -= _baseDamage;
         Debug.Log($"Здоровье {_name}: {_current}");
 
         if (_current <= 0)
-            HealthExhausted?.Invoke();
+            Exhausted?.Invoke();
     }
 
     public void ReceiveHeal(float Heal)
     {
         if (_current < _max)
             _current += Heal;
+
+        if (_current > _max)
+            _current = _max;
 
         Debug.Log($"Здоровье {_name}: {_current}");
     }

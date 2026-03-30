@@ -13,12 +13,12 @@ public class StrikeHandler : MonoBehaviour
     [SerializeField] private float _baseHeight;
     [SerializeField] private AttackInput _attackInput;
 
-    public bool isAttacking { get; private set; } = false;
-
     private Coroutine _strikeRoutine;
     private BoxCollider2D _box;
 
-    private void Start()
+    public bool IsAttacking { get; private set; } = false;
+
+    private void Awake()
     {
         _box = GetComponent<BoxCollider2D>();
     }
@@ -35,11 +35,6 @@ public class StrikeHandler : MonoBehaviour
             _attackInput.AttackButtonIsPressed -= HandleAttackPressed;
     }
 
-    private void HandleAttackPressed()
-    {
-        Strike();
-    }
-
     public void Strike()
     {
         if (_strikeRoutine != null)
@@ -48,15 +43,19 @@ public class StrikeHandler : MonoBehaviour
         _strikeRoutine = StartCoroutine(AttackTiming());
     }
 
+    private void HandleAttackPressed()
+    {
+        Strike();
+    }
+
     private IEnumerator AttackTiming()
     {
         _box.size = new Vector2(_width, _height);
-        isAttacking = true;
+        IsAttacking = true;
 
         yield return new WaitForSeconds(_timeStep);
 
         _box.size = new Vector2(_baseWidth, _baseHeight);
-        _strikeRoutine = null;
-        isAttacking = false;
+        IsAttacking = false;
     }
 }
