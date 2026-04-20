@@ -77,8 +77,7 @@ public class Enemy : MonoBehaviour
 
         if (_isFindTarget == true)
         {
-            transform.LookAt(_heroTarget);
-            transform.Rotate(0, 90, 0);
+            _moveToTarget.TurnAround(_heroTarget);
 
             _mover.Move(_heroTarget, step);
         }

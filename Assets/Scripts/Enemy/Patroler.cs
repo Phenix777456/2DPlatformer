@@ -25,6 +25,7 @@ public class Patroler : MonoBehaviour
 
     public void TurnAround(Transform finalTarget)
     {
-        transform.rotation *= Quaternion.Euler(0, _rotateY, 0);
+        transform.LookAt(finalTarget);
+        transform.Rotate(0, 90, 0);
     }
 }
