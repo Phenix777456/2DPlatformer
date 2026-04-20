@@ -77,10 +77,10 @@ public class Enemy : MonoBehaviour
 
         if (_isFindTarget == true)
         {
-            _moveToTarget.TurnAround(_heroTarget);
+            transform.LookAt(_heroTarget);
+            transform.Rotate(0, 90, 0);
 
             _mover.Move(_heroTarget, step);
         }
     }
-
 }

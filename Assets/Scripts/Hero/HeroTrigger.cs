@@ -6,7 +6,7 @@ public class HeroTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
+        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy) && _strikeHandler.IsAttacking == true)
             enemy.Health.Reduce();
     }
 }

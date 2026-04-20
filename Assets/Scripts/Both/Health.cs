@@ -7,32 +7,38 @@ public class Health : MonoBehaviour
     [SerializeField] private float _baseDamage;
     [SerializeField] private string _name;
 
-    private float _current;
+    public float Max => _max;
+
+    public float Current { get; private set; }
 
     public event Action Exhausted;
+    public event Action<float, float> HealthChanged;
 
     private void Awake()
     {
-        _current = _max;
+        Current = _max;
     }
 
     public void Reduce()
     {
-        _current -= _baseDamage;
-        Debug.Log($"Здоровье {_name}: {_current}");
+        Current -= _baseDamage;
+        HealthChanged?.Invoke(Current, _max);
+        Debug.Log($"Здоровье {_name}: {Current}");
 
-        if (_current <= 0)
+        if (Current <= 0)
             Exhausted?.Invoke();
     }
 
     public void ReceiveHeal(float Heal)
     {
-        if (_current < _max)
-            _current += Heal;
+        if (Current < _max)
+            Current += Heal;
 
-        if (_current > _max)
-            _current = _max;
+        if (Current > _max)
+            Current = _max;
 
-        Debug.Log($"Здоровье {_name}: {_current}");
+        HealthChanged?.Invoke(Current, _max);
+
+        Debug.Log($"Здоровье {_name}: {Current}");
     }
 }
