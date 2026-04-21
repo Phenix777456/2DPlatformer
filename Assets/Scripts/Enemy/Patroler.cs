@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Patroler : MonoBehaviour
 {
-    private float _rotateY = 180f;
+    private float _rotateY = 90f;
     private float _minDistance = 0.5f;
 
 
@@ -26,6 +26,6 @@ public class Patroler : MonoBehaviour
     public void TurnAround(Transform finalTarget)
     {
         transform.LookAt(finalTarget);
-        transform.Rotate(0, 90, 0);
+        transform.Rotate(0, _rotateY, 0);
     }
 }

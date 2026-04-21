@@ -42,14 +42,14 @@ public class HeroKnight : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        // Increase timer that controls attack combo
+        // Increase _timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
 
-        // Increase timer that checks roll duration
+        // Increase _timer that checks roll duration
         if(m_rolling)
             m_rollCurrentTime += Time.deltaTime;
 
-        // Disable rolling if timer extends duration
+        // Disable rolling if _timer extends duration
         if(m_rollCurrentTime > m_rollDuration)
             m_rolling = false;
 
@@ -122,7 +122,7 @@ public class HeroKnight : MonoBehaviour {
             // Call one of three attack animations "Attack1", "Attack2", "Attack3"
             m_animator.SetTrigger("Attack" + m_currentAttack);
 
-            // Reset timer
+            // Reset _timer
             m_timeSinceAttack = 0.0f;
         }
 
@@ -158,7 +158,7 @@ public class HeroKnight : MonoBehaviour {
         //Run
         else if (Mathf.Abs(inputX) > Mathf.Epsilon)
         {
-            // Reset timer
+            // Reset _timer
             m_delayToIdle = 0.05f;
             m_animator.SetInteger("AnimState", 1);
         }

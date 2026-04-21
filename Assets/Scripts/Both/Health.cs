@@ -4,7 +4,6 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float _max;
-    [SerializeField] private float _baseDamage;
     [SerializeField] private string _name;
 
     public float Max => _max;
@@ -19,10 +18,11 @@ public class Health : MonoBehaviour
         Current = _max;
     }
 
-    public void Reduce()
+    public void Reduce(float damage)
     {
-        Current -= _baseDamage;
+        Current -= damage;
         HealthChanged?.Invoke(Current, _max);
+
         Debug.Log($"Здоровье {_name}: {Current}");
 
         if (Current <= 0)

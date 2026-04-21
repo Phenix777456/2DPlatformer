@@ -3,10 +3,11 @@ using UnityEngine;
 public class HeroTrigger : MonoBehaviour
 {
     [SerializeField] private StrikeHandler _strikeHandler;
+    [SerializeField] private float _heroDamage;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy) && _strikeHandler.IsAttacking == true)
-            enemy.Health.Reduce();
+            enemy.Health.Reduce(_heroDamage);
     }
 }
