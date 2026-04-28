@@ -11,7 +11,7 @@ public sealed class Slider : MonoBehaviour
 
     private float _targetValue;
     private float _velocity;
-    //private Coroutine _changeCoroutine;
+
 
     private void OnEnable()
     {
